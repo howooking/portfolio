@@ -3,12 +3,23 @@
 @tailwind utilities;
 
 html::-webkit-scrollbar {
-  display: none;
+  /* display: none; */
 }
 html {
-  scrollbar-width: none;
+  /* scrollbar-width: none; */
+  scroll-behavior: smooth !important;
 }
 
 .hero-img {
   background-image: url("https://images.unsplash.com/photo-1532210317995-cc56d90177d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+}
+
+/* modal disable scroll */
+body.modal-open {
+  overflow: hidden;
+}
+
+::selection {
+  background-color: black;
+  color: yellow;
 }

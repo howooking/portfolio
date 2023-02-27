@@ -1,18 +1,23 @@
-export const NAV_ITEMS = [
+type NavItem = {
+  title: string;
+  section: string;
+};
+
+export const NAV_ITEMS: Array<NavItem> = [
   {
     title: "About",
-    href: "/#about",
+    section: "/",
   },
   {
     title: "Skills",
-    href: "/#skills",
+    section: "/",
   },
   {
-    title: "ProjectS",
-    href: "/#projects",
+    title: "Projects",
+    section: "/",
   },
   {
     title: "Career",
-    href: "/#career",
+    section: "/",
   },
 ];
