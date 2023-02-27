@@ -20,4 +20,8 @@ export const NAV_ITEMS: Array<NavItem> = [
     title: "Career",
     section: "/",
   },
+  {
+    title: " Contact",
+    section: "/",
+  },
 ];

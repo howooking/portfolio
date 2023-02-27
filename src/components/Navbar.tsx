@@ -1,6 +1,6 @@
 "use client";
 
-import { NAV_ITEMS } from "@/constants/constants";
+import { NAV_ITEMS } from "@/constants/navItems";
 import useProgressbar from "@/hooks/useProgressbar";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -34,8 +34,6 @@ export default function Navbar() {
     };
     window.addEventListener("scroll", changeNavbar);
   }, []);
-
-  //modal scroll diable
 
   return (
     <header
@@ -93,6 +91,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+      {/* progress bar */}
       <span
         className='absolute h-1 w-full bg-primary duration-200'
         style={{ transform: `translateX(${progress - 100}%)` }}
