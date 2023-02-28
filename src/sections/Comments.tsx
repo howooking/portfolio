@@ -84,7 +84,7 @@ export default function Comments() {
       <Container>
         <div className='shadow-lg'>
           <div className='h-[70vh] w-full bg-blue-100 dark:bg-blue-900'>
-            <div className='flex flex-col-reverse  gap-2'>
+            <div className='flex flex-col-reverse justify-start gap-2'>
               {data?.data.map((comment: Comment) => {
                 const isMe =
                   session?.user?.email === comment.author.email ? true : false;
