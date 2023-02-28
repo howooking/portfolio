@@ -8,6 +8,11 @@ export default function About() {
       <Container>
         <p>adfajsdfhajksdfhakjshflk</p>
       </Container>
+      <div className='flex h-[200px] w-full flex-col-reverse justify-start bg-slate-300'>
+        <div>a</div>
+        <div>b</div>
+        <div>c</div>
+      </div>
     </section>
   );
 }

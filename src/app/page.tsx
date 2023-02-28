@@ -9,11 +9,11 @@ import Skills from "@/sections/Skills";
 export default function Home() {
   return (
     <main>
-      <Hero />
+      {/* <Hero /> */}
       <About />
-      <Skills />
-      <Projects />
-      <Career />
+      {/* <Skills /> */}
+      {/* <Projects /> */}
+      {/* <Career /> */}
       <Comments />
       <Footer />
     </main>

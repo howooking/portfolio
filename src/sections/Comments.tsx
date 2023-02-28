@@ -83,20 +83,16 @@ export default function Comments() {
       <SectionHeading>Comments</SectionHeading>
       <Container>
         <div className='shadow-lg'>
-          <div className='h-[70vh] w-full bg-blue-100 dark:bg-blue-900'>
-            <div className='flex flex-col-reverse justify-start gap-2'>
-              {data?.data.map((comment: Comment) => {
-                const isMe =
-                  session?.user?.email === comment.author.email ? true : false;
-                return (
-                  <CommentBox
-                    key={comment.id}
-                    text={comment.text}
-                    isMe={isMe}
-                  />
-                );
-              })}
-            </div>
+          <div className='flex h-[70vh] w-full flex-col-reverse overflow-scroll bg-blue-100'>
+            {/* <div className='flex flex-col-reverse gap-2'> */}
+            {data?.data.map((comment: Comment) => {
+              const isMe =
+                session?.user?.email === comment.author.email ? true : false;
+              return (
+                <CommentBox key={comment.id} text={comment.text} isMe={isMe} />
+              );
+            })}
+            {/* </div> */}
           </div>
           <div className='w-full bg-fuchsia-100'>
             <form action='POST' onSubmit={handleSubmit}>
