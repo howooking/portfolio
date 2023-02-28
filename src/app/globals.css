@@ -8,6 +8,7 @@ html::-webkit-scrollbar {
 html {
   scrollbar-width: none;
   scroll-behavior: smooth !important;
+  scroll-padding-top: 80px;
 }
 
 .hero-img {

@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-import DarkmodeProvider from "@/Context/DarkmodeProvider";
+import Providers from "@/Context/Providers";
 import "./globals.css";
 
 export const metadata = {
@@ -15,10 +15,10 @@ export default function RootLayout({
   return (
     <html lang='ko'>
       <body>
-        <DarkmodeProvider>
-          <Navbar />
+        <Providers>
+          {/* <Navbar /> */}
           {children}
-        </DarkmodeProvider>
+        </Providers>
       </body>
     </html>
   );

@@ -37,7 +37,7 @@ export default function Navbar() {
 
   return (
     <header
-      className='fixed z-30 w-full duration-300 ease-in'
+      className='fixed top-0 z-50 w-full duration-300 ease-in'
       style={{
         backgroundColor: navbar.backgroundColor,
       }}
@@ -45,17 +45,17 @@ export default function Navbar() {
       <div className='mx-auto max-w-6xl select-none p-5'>
         <div className='flex items-center justify-between'>
           <h1 className='text-3xl font-bold hover:text-primary '>
-            <Link href='/'>호우&apos;s Portfolio</Link>
+            <a href='/#home'>Hortfoliwoo</a>
           </h1>
           <nav className='hidden items-center gap-5 sm:flex'>
             {NAV_ITEMS.map((item) => (
-              <Link
+              <a
                 key={item.title}
                 href={item.section}
                 className='text-xl font-bold hover:text-primary'
               >
                 {item.title}
-              </Link>
+              </a>
             ))}
             <DarkmodeSwitch />
           </nav>
@@ -78,14 +78,14 @@ export default function Navbar() {
           >
             <nav className='flex flex-col items-center gap-10'>
               {NAV_ITEMS.map((item) => (
-                <Link
+                <a
                   key={item.title}
                   href={item.section}
                   className='text-5xl font-bold hover:text-primary'
                   onClick={handleOpen}
                 >
                   {item.title}
-                </Link>
+                </a>
               ))}
             </nav>
           </div>

@@ -5,23 +5,23 @@ type NavItem = {
 
 export const NAV_ITEMS: Array<NavItem> = [
   {
-    title: "About",
-    section: "/",
+    title: "<About />",
+    section: "/#about",
   },
   {
-    title: "Skills",
-    section: "/",
+    title: "<Skills />",
+    section: "/#skills",
   },
   {
-    title: "Projects",
-    section: "/",
+    title: "<Projects />",
+    section: "/#projects",
   },
   {
-    title: "Career",
-    section: "/",
+    title: "<Career />",
+    section: "/#career",
   },
   {
-    title: " Contact",
-    section: "/",
+    title: "<Comments />",
+    section: "/#comments",
   },
 ];
