@@ -5,6 +5,7 @@ import Container from "@/components/Container";
 import SectionHeading from "@/components/SectionHeading";
 import axios, { AxiosError } from "axios";
 import { signIn, signOut, useSession } from "next-auth/react";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -100,7 +101,17 @@ export default function Comments() {
   }, [fetchNextPage, hasNextPage, inView]);
 
   if (isError) error;
-  if (isLoading) return <p>Loading</p>;
+  if (isLoading)
+    return (
+      <div className='flex h-screen items-center justify-center'>
+        <Image
+          alt='spinner'
+          src='/images/spinner.svg'
+          width={100}
+          height={100}
+        />
+      </div>
+    );
   return (
     <section className='h-screen pt-[80px]' id='comments'>
       <SectionHeading>Comments</SectionHeading>
@@ -135,32 +146,29 @@ export default function Comments() {
             <span className='invisible' ref={ref}>
               intersection observer marker
             </span>
-            {isFetchingNextPage && <div>Fetching...</div>}
           </div>
           <div className='w-full'>
             <form action='POST' onSubmit={handleSubmit}>
-              <div className='flex dark:bg-white'>
+              <div className='flex items-center dark:bg-white'>
                 <input
                   type='text'
-                  className={`flex-1 p-2 dark:bg-white dark:text-black ${
+                  className={`flex-1 px-2 dark:bg-white dark:text-black ${
                     commentInput.length >= 80 ? "text-red-400" : ""
                   }`}
                   value={commentInput}
                   onChange={handleChange}
-                  placeholder={`${
-                    session?.user?.name ? "" : "Auth 구현했습니다"
-                  }`}
+                  placeholder={`${session?.user?.name ? "" : "OAuth 입니다."}`}
                 />
 
                 <button
-                  className='btn-primary btn'
+                  className='btn-primary btn-xs btn'
                   onClick={() => handleSubmit}
                   disabled={disabled}
                 >
                   {session?.user?.name ? <AiOutlineSend size={20} /> : "로그인"}
                 </button>
                 <span
-                  className={`btn-error btn ${
+                  className={`btn-error btn-xs btn ${
                     session?.user?.name ? "" : "hidden"
                   }`}
                   onClick={() => signOut()}
