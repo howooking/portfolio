@@ -22,6 +22,6 @@ export const NAV_ITEMS: Array<NavItem> = [
   },
   {
     title: "<Comments />",
-    section: "/#comments",
+    section: "/comments",
   },
 ];

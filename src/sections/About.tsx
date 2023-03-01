@@ -6,13 +6,13 @@ export default function About() {
     <section className='h-screen' id='about'>
       <SectionHeading>About</SectionHeading>
       <Container>
-        <p>adfajsdfhajksdfhakjshflk</p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam iusto
+          quisquam earum. Deleniti totam pariatur laudantium. Corporis
+          consequuntur dolorem suscipit est dolore adipisci quos dicta
+          praesentium optio, eius quis fuga?
+        </p>
       </Container>
-      <div className='flex h-[200px] w-full flex-col-reverse justify-start bg-slate-300'>
-        <div>a</div>
-        <div>b</div>
-        <div>c</div>
-      </div>
     </section>
   );
 }

@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang='ko'>
       <body>
         <Providers>
-          {/* <Navbar /> */}
+          <Navbar />
           {children}
         </Providers>
       </body>

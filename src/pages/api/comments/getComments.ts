@@ -6,9 +6,16 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    //Get all Comments
+    const limit = 6;
+    const cursor = req.query.cursor ?? "";
+    const cursorObj =
+      cursor === "" ? undefined : { id: parseInt(cursor as string) };
+    // Get recent 7 comments
     try {
       const data = await prisma.comment.findMany({
+        take: limit,
+        cursor: cursorObj,
+        skip: cursor === "" ? 0 : 1,
         include: {
           author: true,
         },
@@ -16,7 +23,10 @@ export default async function handler(
           createdAt: "desc",
         },
       });
-      res.status(200).json(data);
+      res.status(200).json({
+        data,
+        nextId: data.length === limit ? data[limit - 1].id : undefined,
+      });
     } catch (err) {
       res
         .status(403)

@@ -8,28 +8,22 @@ import DarkmodeSwitch from "./DarkmodeSwitch";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 export default function Navbar() {
-  //handling mobile modal
-  const [open, setOpen] = useState<boolean>(false);
-  const handleOpen = (): void => {
-    setOpen((prev) => !prev);
-    document.body.classList.toggle("modal-open");
+  //handling mobile drawer
+  const [openDrawer, setOpenDrawer] = useState<boolean>(false);
+  const handleDrawer = (): void => {
+    setOpenDrawer((prev) => !prev);
+    document.body.classList.toggle("drawer-open");
   };
 
   //handling scroll bar
-  const progress = useProgressbar();
-  const [navbar, setNavbar] = useState({
-    backgroundColor: "transparent",
-  });
+  const scrollProgress = useProgressbar();
+  const [navbarColor, setNavbarColor] = useState<string>("transparent");
   useEffect(() => {
     const changeNavbar = (): void => {
       if (window.scrollY > 90) {
-        setNavbar({
-          backgroundColor: "#A2798F",
-        });
+        setNavbarColor("#A2798F");
       } else {
-        setNavbar({
-          backgroundColor: "transparent",
-        });
+        setNavbarColor("transparent");
       }
     };
     window.addEventListener("scroll", changeNavbar);
@@ -39,7 +33,7 @@ export default function Navbar() {
     <header
       className='fixed top-0 z-50 w-full duration-300 ease-in'
       style={{
-        backgroundColor: navbar.backgroundColor,
+        backgroundColor: navbarColor,
       }}
     >
       <div className='mx-auto max-w-6xl select-none p-5'>
@@ -63,15 +57,23 @@ export default function Navbar() {
           {/* mobile button */}
           <div className='z-20 flex items-center gap-3 sm:hidden'>
             <DarkmodeSwitch />
-            {open ? (
-              <AiOutlineClose size={35} onClick={handleOpen} />
+            {openDrawer ? (
+              <AiOutlineClose
+                size={35}
+                onClick={handleDrawer}
+                className='hover:text-primary'
+              />
             ) : (
-              <AiOutlineMenu size={35} onClick={handleOpen} />
+              <AiOutlineMenu
+                size={35}
+                onClick={handleDrawer}
+                className='hover:text-primary'
+              />
             )}
           </div>
           <div
             className={
-              open
+              openDrawer
                 ? "absolute inset-0 flex h-screen w-full items-center justify-center bg-gray-500/80 text-center duration-300 ease-in sm:hidden"
                 : "absolute top-0 bottom-0 left-[100%] right-0 flex h-screen w-full items-center justify-center bg-gray-500/80 text-center duration-300 ease-in sm:hidden"
             }
@@ -82,7 +84,7 @@ export default function Navbar() {
                   key={item.title}
                   href={item.section}
                   className='text-5xl font-bold hover:text-primary'
-                  onClick={handleOpen}
+                  onClick={handleDrawer}
                 >
                   {item.title}
                 </a>
@@ -94,7 +96,7 @@ export default function Navbar() {
       {/* progress bar */}
       <span
         className='absolute h-1 w-full bg-primary duration-200'
-        style={{ transform: `translateX(${progress - 100}%)` }}
+        style={{ transform: `translateX(${scrollProgress - 100}%)` }}
       />
     </header>
   );

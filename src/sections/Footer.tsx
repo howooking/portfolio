@@ -7,15 +7,15 @@ export default function Footer() {
     <footer className='bg-secondary py-3'>
       <Container>
         <div className='flex items-center justify-between'>
-          <div className='flex items-center gap-2 text-3xl'>
+          <div className='flex items-center gap-2'>
             <AiOutlineCopyrightCircle size={40} />
-            <p className='font-bold'>2023 Lee Jungwoo </p>
+            <p className='text-xl font-bold sm:text-3xl'>2023 Lee Jungwoo </p>
           </div>
           <div className='flex items-center gap-10'>
             {SOCIALS.map((social) => (
               <Link href={social.href} key={social.title}>
                 <social.icon
-                  size={50}
+                  size={40}
                   className='cursor-pointer hover:text-primary'
                 />
               </Link>
