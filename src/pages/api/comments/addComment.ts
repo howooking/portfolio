@@ -14,7 +14,7 @@ export default async function handler(
     if (!session?.user?.email)
       return res.status(401).json({ message: "로그인 해주세요" });
 
-    //get user
+    // Get user
     const prismaUser = await prisma.user.findUnique({
       where: {
         email: session.user?.email,
@@ -26,7 +26,7 @@ export default async function handler(
     if (!commentInput.length)
       return res.status(403).json({ message: "글은 써야지" });
 
-    //Create Comment
+    // Create Comment
     try {
       await prisma.comment.create({
         data: {
