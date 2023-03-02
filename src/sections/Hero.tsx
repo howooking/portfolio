@@ -2,7 +2,6 @@
 
 import { AiOutlineArrowDown } from "react-icons/ai";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Hero() {
@@ -22,13 +21,13 @@ export default function Hero() {
           className='rounded-full'
           priority
         />
-        <div className='w-[400px] space-y-7 text-center text-xl font-bold'>
+        <div className='space-y-7 text-center text-xl font-bold'>
           <h1 className='text-3xl'>
-            Hi, I&apos;m <span className='text-4xl text-primary'>Jungwoo</span>
+            Hi, I&apos;m <span className='text-4xl text-accent'>Jungwoo</span>
           </h1>
           <p>안녕하세요</p>
           <p>웹 프론트앤드 개발자 이정우입니다.</p>
-          <a href='/#projects' className='btn-primary btn'>
+          <a href='/#projects' className='btn-accent btn'>
             프로젝트 보러가기
           </a>
         </div>

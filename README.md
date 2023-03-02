@@ -1,3 +1,8 @@
+Todo
+[] confirm 모달 창
+[] 무한 스크롤 로딩 UI
+[] oauth 로그인창 수정
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

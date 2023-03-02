@@ -6,11 +6,12 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const limit = 6;
+    const limit = 500;
     const cursor = req.query.cursor ?? "";
     const cursorObj =
-      cursor === "" ? undefined : { id: parseInt(cursor as string) };
-    // Get recent 7 comments
+      cursor === "" ? undefined : { rid: parseInt(cursor as string) };
+
+    // Get comments
     try {
       const data = await prisma.comment.findMany({
         take: limit,

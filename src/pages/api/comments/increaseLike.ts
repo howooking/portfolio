@@ -9,7 +9,7 @@ export default async function handler(
     const commentId = req.body.data;
     // increase like
     try {
-      const selectedComment = await prisma.comment.update({
+      await prisma.comment.update({
         where: {
           id: commentId,
         },

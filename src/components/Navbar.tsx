@@ -2,7 +2,6 @@
 
 import { NAV_ITEMS } from "@/constants/navItems";
 import useProgressbar from "@/hooks/useProgressbar";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
@@ -21,7 +20,7 @@ export default function Navbar() {
   useEffect(() => {
     const changeNavbar = (): void => {
       if (window.scrollY > 90) {
-        setNavbarColor("#A2798F");
+        setNavbarColor("#be8d8a");
       } else {
         setNavbarColor("transparent");
       }
@@ -36,17 +35,17 @@ export default function Navbar() {
         backgroundColor: navbarColor,
       }}
     >
-      <div className='mx-auto max-w-6xl select-none p-5'>
+      <div className='mx-auto max-w-6xl select-none px-5 py-2'>
         <div className='flex items-center justify-between'>
-          <h1 className='text-3xl font-bold hover:text-primary '>
-            <a href='/#home'>Hortfoliwoo</a>
+          <h1 className='text-2xl font-bold hover:text-accent '>
+            <a href='/#home'>Jungwoo&apos;s Portfolio</a>
           </h1>
           <nav className='hidden items-center gap-5 sm:flex'>
             {NAV_ITEMS.map((item) => (
               <a
                 key={item.title}
                 href={item.section}
-                className='text-xl font-bold hover:text-primary'
+                className='text-lg font-bold hover:text-accent'
               >
                 {item.title}
               </a>
@@ -61,13 +60,13 @@ export default function Navbar() {
               <AiOutlineClose
                 size={35}
                 onClick={handleDrawer}
-                className='hover:text-primary'
+                className='hover:text-accent'
               />
             ) : (
               <AiOutlineMenu
                 size={35}
                 onClick={handleDrawer}
-                className='hover:text-primary'
+                className='hover:text-accent'
               />
             )}
           </div>
@@ -95,7 +94,7 @@ export default function Navbar() {
       </div>
       {/* progress bar */}
       <span
-        className='absolute h-1 w-full bg-primary duration-200'
+        className='absolute h-1 w-full bg-accent duration-200'
         style={{ transform: `translateX(${scrollProgress - 100}%)` }}
       />
     </header>

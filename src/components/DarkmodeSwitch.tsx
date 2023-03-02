@@ -17,13 +17,13 @@ export default function DarkmodeSwitch() {
         {currentTheme === "dark" ? (
           <BsFillSunFill
             size={40}
-            className='cursor-pointer rounded-full bg-slate-400 p-2 text-3xl hover:text-primary'
+            className='cursor-pointer rounded-full bg-slate-300 p-2 text-3xl hover:text-accent'
             onClick={() => setTheme("light")}
           />
         ) : (
           <BsFillMoonFill
             size={40}
-            className='cursor-pointer rounded-full bg-slate-100 p-2 text-3xl hover:text-primary'
+            className='cursor-pointer rounded-full bg-slate-300 p-2 text-3xl hover:text-accent'
             onClick={() => setTheme("dark")}
           />
         )}

@@ -6,13 +6,12 @@ import SectionHeading from "@/components/SectionHeading";
 import axios, { AxiosError } from "axios";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { AiOutlineSend } from "react-icons/ai";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
-import { useInfiniteQuery, useMutation, useQueryClient } from "react-query";
+import { useInfiniteQuery, useMutation } from "react-query";
 
 export type Comment = {
   author: {
@@ -29,22 +28,12 @@ export type Comment = {
 };
 
 export default function Comments() {
-  const { ref, inView } = useInView();
-
   const { data: session } = useSession();
 
-  const queryClient = useQueryClient();
-
-  let toastCommentId: string;
-  const [commentInput, setCommentInput] = useState<string>("");
-  const [disabled, setDisabled] = useState<boolean>(false);
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setCommentInput(event.target.value);
-
+  //GETTING COMMENTS
   const {
     isLoading,
     isError,
-    error,
     data,
     isFetching,
     isFetchingNextPage,
@@ -62,10 +51,28 @@ export default function Comments() {
     getNextPageParam: (lastPage) => lastPage.nextId ?? false,
   });
 
-  // ADD COMMENT
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView && hasNextPage) {
+      fetchNextPage();
+    }
+  }, [fetchNextPage, hasNextPage, inView]);
+
+  ///POST A COMMENT
+
+  let toastCommentId: string;
+
+  const [commentInput, setCommentInput] = useState<string>("");
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setCommentInput(event.target.value);
+
+  const [disabled, setDisabled] = useState<boolean>(false);
+
   const { mutate: mutateAddComment } = useMutation({
     mutationFn: async (commentInput: string) =>
       await axios.post("/api/comments/addComment", { commentInput }),
+    mutationKey: "comments",
     onSuccess: ({ data }) => {
       setCommentInput("");
       toast.success(data.message, { id: toastCommentId });
@@ -77,7 +84,6 @@ export default function Comments() {
     },
     onSettled: async () => {
       setDisabled(false);
-      // await queryClient.invalidateQueries(["comments"]);
       refetch();
     },
   });
@@ -86,7 +92,6 @@ export default function Comments() {
     event.preventDefault();
     if (!session?.user?.name) {
       signIn();
-      console.log("hello");
       return;
     }
     toastCommentId = toast.loading("코멘트 다는 중");
@@ -94,13 +99,7 @@ export default function Comments() {
     mutateAddComment(commentInput);
   };
 
-  useEffect(() => {
-    if (inView && hasNextPage) {
-      fetchNextPage();
-    }
-  }, [fetchNextPage, hasNextPage, inView]);
-
-  if (isError) error;
+  if (isError) return <>Error!!</>;
   if (isLoading)
     return (
       <div className='flex h-screen items-center justify-center'>
@@ -109,11 +108,12 @@ export default function Comments() {
           src='/images/spinner.svg'
           width={100}
           height={100}
+          priority
         />
       </div>
     );
   return (
-    <section className='h-screen pt-[80px]' id='comments'>
+    <section className='h-screen pt-[80px]'>
       <SectionHeading>Comments</SectionHeading>
       <Container>
         <div className='shadow-lg'>
@@ -141,6 +141,9 @@ export default function Comments() {
                     />
                   );
                 })}
+                {isFetchingNextPage && (
+                  <div className='text-center font-bold'>로딩중...</div>
+                )}
               </div>
             ))}
             <span className='invisible' ref={ref}>
@@ -157,7 +160,7 @@ export default function Comments() {
                   }`}
                   value={commentInput}
                   onChange={handleChange}
-                  placeholder={`${session?.user?.name ? "" : "OAuth 입니다."}`}
+                  placeholder={`${session?.user?.name ? "" : "auth구현"}`}
                 />
 
                 <button
