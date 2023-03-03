@@ -8,7 +8,7 @@ export default function Hero() {
   const router = useRouter();
   return (
     <section
-      className='hero-img sec-h flex flex-col items-center justify-center bg-cover bg-fixed bg-center sm:h-screen'
+      className='hero-img mobile-sec-h flex flex-col items-center justify-center bg-cover bg-fixed bg-center sm:h-screen'
       id='home'
     >
       <div className='absolute inset-0 z-10 bg-black/10 dark:bg-black/50' />

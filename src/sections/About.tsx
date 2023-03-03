@@ -5,9 +5,6 @@ import { I_AM } from "@/constants/iam";
 import { SKILLS } from "@/constants/skills";
 import Image from "next/image";
 import { Typewriter } from "react-simple-typewriter";
-import Lottie from "react-lottie-player/dist/LottiePlayerLight";
-import lottieJson from "../../public/images/developer.json";
-import { AiOutlineArrowDown } from "react-icons/ai";
 import ResponsiveLottie from "@/components/ResponsiveLottie";
 
 export default function About() {
@@ -47,11 +44,6 @@ export default function About() {
             ))}
           </div>
         </div>
-      </div>
-      <div className='absolute bottom-0 left-1/2 z-30 -translate-x-1/2 pb-3'>
-        <a href='/#projects'>
-          <AiOutlineArrowDown size={40} className='animate-bounce' />
-        </a>
       </div>
     </section>
   );

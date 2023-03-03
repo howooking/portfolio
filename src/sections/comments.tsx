@@ -8,8 +8,6 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { AiOutlineSend } from "react-icons/ai";
-import { RiLogoutCircleRLine } from "react-icons/ri";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery, useMutation } from "react-query";
 
@@ -112,8 +110,8 @@ export default function Comments() {
       </div>
     );
   return (
-    <section className='sec-h pt-[80px]'>
-      <div className='flex items-center justify-center gap-4'>
+    <section className='sec-h my-auto' id='comments'>
+      <div className='flex items-center justify-center gap-4 py-2'>
         <SectionHeading>Comments</SectionHeading>
         <button
           className={`btn-error btn-sm btn ${
@@ -126,7 +124,7 @@ export default function Comments() {
       </div>
       <Container>
         <div className='shadow-lg'>
-          <div className='relative flex h-[70vh] w-full flex-col-reverse overflow-y-scroll bg-blue-100 dark:bg-gray-900'>
+          <div className='relative flex h-[70vh] w-full flex-col-reverse overflow-y-scroll bg-blue-100 dark:bg-gray-900 sm:h-[75vh]'>
             {data?.pages.map((page) => (
               <div
                 key={page.nextId ?? "lastPage"}

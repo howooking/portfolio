@@ -57,3 +57,7 @@ html {
 .wave {
   animation: wave 1s ease-in-out infinite;
 }
+
+.mobile-sec-h {
+  height: calc(100vh - 56px);
+}

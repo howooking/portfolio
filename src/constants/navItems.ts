@@ -5,6 +5,10 @@ type NavItem = {
 
 export const NAV_ITEMS: Array<NavItem> = [
   {
+    title: "<Home />",
+    section: "/#home",
+  },
+  {
     title: "<About />",
     section: "/#about",
   },
@@ -18,6 +22,6 @@ export const NAV_ITEMS: Array<NavItem> = [
   // },
   {
     title: "<Comments />",
-    section: "/comments",
+    section: "/#comments",
   },
 ];

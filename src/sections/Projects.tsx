@@ -8,7 +8,7 @@ import { useState } from "react";
 import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 
 export default function Projects() {
-  const [currSlide, setCurrSlide] = useState<number>(1);
+  const [currSlide, setCurrSlide] = useState<number>(0);
   const nextSlide = () => {
     setCurrSlide(currSlide === PROJECTS.length - 1 ? 0 : currSlide + 1);
   };

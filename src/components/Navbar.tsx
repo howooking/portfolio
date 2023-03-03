@@ -5,8 +5,12 @@ import useProgressbar from "@/hooks/useProgressbar";
 import { useEffect, useState } from "react";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import Image from "next/image";
 
 export default function Navbar() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   //handling mobile drawer
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const handleDrawer = (): void => {
@@ -58,22 +62,32 @@ export default function Navbar() {
           </nav>
 
           {/* mobile button */}
-          <div className='z-20 flex items-center gap-3 sm:hidden'>
-            <DarkmodeSwitch />
-            {openDrawer ? (
-              <AiOutlineClose
-                size={35}
-                onClick={handleDrawer}
-                className='hover:text-accent'
-              />
-            ) : (
-              <AiOutlineMenu
-                size={35}
-                onClick={handleDrawer}
-                className='hover:text-accent'
-              />
-            )}
-          </div>
+          {mounted ? (
+            <div className='z-20 flex items-center gap-3 sm:hidden'>
+              <DarkmodeSwitch />
+              {openDrawer ? (
+                <AiOutlineClose
+                  size={35}
+                  onClick={handleDrawer}
+                  className='hover:text-accent'
+                />
+              ) : (
+                <AiOutlineMenu
+                  size={35}
+                  onClick={handleDrawer}
+                  className='hover:text-accent'
+                />
+              )}
+            </div>
+          ) : (
+            <Image
+              alt='loading'
+              src='/images/spinner.svg'
+              width={20}
+              height={20}
+            />
+          )}
+
           <div
             className={
               openDrawer
