@@ -8,7 +8,7 @@ html::-webkit-scrollbar {
 html {
   /* scrollbar-width: none; */
   scroll-behavior: smooth !important;
-  scroll-padding-top: 55px;
+  scroll-padding-top: 52px;
 }
 
 .hero-img {
@@ -24,4 +24,36 @@ html {
 ::selection {
   background-color: black;
   color: yellow;
+}
+
+/* section height */
+.sec-h {
+  height: calc(100vh - 52px);
+}
+
+.icon-position {
+  top: calc(((100vh - 52px) / 2));
+}
+
+/* code mobile width */
+.code-width {
+  /* width: 100%; */
+  width: calc(100% - 5px);
+}
+
+/* wave */
+@keyframes wave {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.wave {
+  animation: wave 1s ease-in-out infinite;
 }

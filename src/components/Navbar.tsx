@@ -19,7 +19,7 @@ export default function Navbar() {
   const [navbarColor, setNavbarColor] = useState<string>("transparent");
   useEffect(() => {
     const changeNavbar = (): void => {
-      if (window.scrollY > 90) {
+      if (window.scrollY > 50) {
         setNavbarColor("#be8d8a");
       } else {
         setNavbarColor("transparent");
@@ -35,6 +35,10 @@ export default function Navbar() {
         backgroundColor: navbarColor,
       }}
     >
+      <span
+        className='absolute h-1 w-full bg-accent duration-200'
+        style={{ transform: `translateX(${scrollProgress - 100}%)` }}
+      />
       <div className='mx-auto max-w-6xl select-none px-5 py-2'>
         <div className='flex items-center justify-between'>
           <h1 className='text-2xl font-bold hover:text-accent '>
@@ -77,7 +81,7 @@ export default function Navbar() {
                 : "absolute top-0 bottom-0 left-[100%] right-0 flex h-screen w-full items-center justify-center bg-gray-500/80 text-center duration-300 ease-in sm:hidden"
             }
           >
-            <nav className='flex flex-col items-center gap-10'>
+            <nav className='flex flex-col items-center gap-10 '>
               {NAV_ITEMS.map((item) => (
                 <a
                   key={item.title}
@@ -93,10 +97,6 @@ export default function Navbar() {
         </div>
       </div>
       {/* progress bar */}
-      <span
-        className='absolute h-1 w-full bg-accent duration-200'
-        style={{ transform: `translateX(${scrollProgress - 100}%)` }}
-      />
     </header>
   );
 }

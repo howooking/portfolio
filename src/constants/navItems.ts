@@ -12,10 +12,10 @@ export const NAV_ITEMS: Array<NavItem> = [
     title: "<Projects />",
     section: "/#projects",
   },
-  {
-    title: "<Career />",
-    section: "/#career",
-  },
+  // {
+  //   title: "<Career />",
+  //   section: "/#career",
+  // },
   {
     title: "<Comments />",
     section: "/comments",

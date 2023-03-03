@@ -6,10 +6,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const limit = 500;
+    const limit = 7;
     const cursor = req.query.cursor ?? "";
     const cursorObj =
-      cursor === "" ? undefined : { rid: parseInt(cursor as string) };
+      cursor === "" ? undefined : { id: parseInt(cursor as string) };
 
     // Get comments
     try {

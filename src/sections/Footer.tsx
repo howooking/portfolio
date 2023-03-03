@@ -4,21 +4,25 @@ import Link from "next/link";
 import { AiOutlineCopyrightCircle } from "react-icons/ai";
 export default function Footer() {
   return (
-    <footer className='bg-secondary py-3'>
+    <footer className='bg-primary py-2'>
       <Container>
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-2'>
-            <AiOutlineCopyrightCircle size={40} />
-            <p className='text-xl font-bold sm:text-3xl'>2023 Lee Jungwoo </p>
+            <AiOutlineCopyrightCircle
+              size={"3vh"}
+              style={{ maxWidth: "30px" }}
+            />
+            <p className='text-sm font-bold sm:text-3xl'>2023 Lee Jungwoo</p>
           </div>
           <div className='flex items-center gap-10'>
             {SOCIALS.map((social) => (
-              <Link href={social.href} key={social.title}>
+              <a href={social.href} key={social.title} target='_blank'>
                 <social.icon
-                  size={40}
-                  className='cursor-pointer hover:text-primary'
+                  size={"3vh"}
+                  className='cursor-pointer hover:text-accent'
+                  style={{ maxWidth: "30px" }}
                 />
-              </Link>
+              </a>
             ))}
           </div>
         </div>

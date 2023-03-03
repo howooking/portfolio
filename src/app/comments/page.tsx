@@ -60,7 +60,6 @@ export default function Comments() {
   }, [fetchNextPage, hasNextPage, inView]);
 
   ///POST A COMMENT
-
   let toastCommentId: string;
 
   const [commentInput, setCommentInput] = useState<string>("");
@@ -113,7 +112,7 @@ export default function Comments() {
       </div>
     );
   return (
-    <section className='h-screen pt-[80px]'>
+    <section className='sec-h pt-[80px]'>
       <SectionHeading>Comments</SectionHeading>
       <Container>
         <div className='shadow-lg'>
@@ -155,23 +154,27 @@ export default function Comments() {
               <div className='flex items-center dark:bg-white'>
                 <input
                   type='text'
-                  className={`flex-1 px-2 dark:bg-white dark:text-black ${
+                  className={`flex-1 p-3 dark:bg-white dark:text-black ${
                     commentInput.length >= 80 ? "text-red-400" : ""
                   }`}
                   value={commentInput}
                   onChange={handleChange}
-                  placeholder={`${session?.user?.name ? "" : "auth구현"}`}
+                  placeholder={`${
+                    session?.user?.name
+                      ? "코멘트를 남겨주세요!"
+                      : "로그인해주세요"
+                  }`}
                 />
 
                 <button
-                  className='btn-primary btn-xs btn'
+                  className='btn-accent btn'
                   onClick={() => handleSubmit}
                   disabled={disabled}
                 >
                   {session?.user?.name ? <AiOutlineSend size={20} /> : "로그인"}
                 </button>
                 <span
-                  className={`btn-error btn-xs btn ${
+                  className={`btn-error btn ${
                     session?.user?.name ? "" : "hidden"
                   }`}
                   onClick={() => signOut()}

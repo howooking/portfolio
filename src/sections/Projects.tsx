@@ -17,13 +17,14 @@ export default function Projects() {
   };
 
   return (
-    <section className='relative h-screen' id='projects'>
+    <section className='sec-h relative' id='projects'>
       {PROJECTS.map((project, index) => (
         <>
           <FaArrowCircleLeft
-            size={50}
-            className='absolute top-[50%] left-8 z-20 animate-bounce cursor-pointer select-none text-accent'
+            size={"5vw"}
+            className='icon-position absolute left-8 z-20 animate-ping cursor-pointer select-none text-base-100 hover:text-accent'
             onClick={prevSlide}
+            style={{ maxWidth: "30px" }}
           />
           <div
             key={project.title}
@@ -32,16 +33,16 @@ export default function Projects() {
             } transition-all duration-1000 ease-in-out`}
           >
             {index === currSlide ? (
-              <div className='aspect-video'>
-                <div className='absolute inset-0 z-10 bg-black/40' />
+              <div className='sec-h relative mx-auto sm:aspect-video'>
+                <div className='absolute inset-0 z-10 bg-black/40 dark:bg-black/60' />
 
                 <Image
                   src={project.img}
                   alt={project.title}
                   fill
-                  className='object-contain'
+                  className='object-cover sm:object-cover'
                 />
-                <div className='mockup-code absolute bottom-20 left-1/2 z-20 -translate-x-1/2'>
+                <div className='code-width mockup-code absolute bottom-5 left-1/2 z-20 -translate-x-1/2 text-[10px] sm:w-2/5 sm:text-base'>
                   <pre data-prefix='$' className='text-error'>
                     <code>{project.title}</code>
                   </pre>
@@ -77,9 +78,10 @@ export default function Projects() {
             ) : null}
           </div>
           <FaArrowCircleRight
-            size={50}
-            className='absolute top-[50%] right-8 z-20 animate-bounce cursor-pointer select-none text-accent'
+            size={"5vw"}
+            className='absolute top-[50%] right-8 z-20 animate-ping cursor-pointer select-none text-base-100 hover:text-accent'
             onClick={nextSlide}
+            style={{ maxWidth: "30px" }}
           />
         </>
       ))}

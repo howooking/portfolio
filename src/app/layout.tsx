@@ -3,7 +3,7 @@ import Providers from "@/Context/Providers";
 import "./globals.css";
 
 export const metadata = {
-  title: "호트폴리우",
+  title: "JW's Portfolio",
   description: "Generated with next13 app, created by Howoo",
 };
 

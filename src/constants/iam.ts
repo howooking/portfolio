@@ -3,5 +3,5 @@ export const I_AM = [
   "VETERINARIAN",
   "COFFEE HOLIC",
   "CAT LOVER",
-  "DESPERATE LEARNER",
+  "STEADY LEARNER",
 ];
