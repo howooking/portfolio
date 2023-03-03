@@ -113,7 +113,17 @@ export default function Comments() {
     );
   return (
     <section className='sec-h pt-[80px]'>
-      <SectionHeading>Comments</SectionHeading>
+      <div className='flex items-center justify-center gap-4'>
+        <SectionHeading>Comments</SectionHeading>
+        <button
+          className={`btn-error btn-sm btn ${
+            session?.user?.name ? "" : "hidden"
+          } z-40`}
+          onClick={() => signOut()}
+        >
+          로그아웃
+        </button>
+      </div>
       <Container>
         <div className='shadow-lg'>
           <div className='relative flex h-[70vh] w-full flex-col-reverse overflow-y-scroll bg-blue-100 dark:bg-gray-900'>
@@ -171,16 +181,8 @@ export default function Comments() {
                   onClick={() => handleSubmit}
                   disabled={disabled}
                 >
-                  {session?.user?.name ? <AiOutlineSend size={20} /> : "로그인"}
+                  {session?.user?.name ? "전송" : "로그인"}
                 </button>
-                <span
-                  className={`btn-error btn ${
-                    session?.user?.name ? "" : "hidden"
-                  }`}
-                  onClick={() => signOut()}
-                >
-                  <RiLogoutCircleRLine className='text-white' size={20} />
-                </span>
               </div>
             </form>
           </div>

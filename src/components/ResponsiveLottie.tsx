@@ -16,8 +16,8 @@ export default function ResponsiveLottie() {
       style={{
         width: "100%",
         height: "auto",
-        maxWidth: "450px",
-        margin: "0 auto",
+        maxWidth: "400px",
+        margin: "auto",
       }}
     >
       <Lottie
@@ -25,8 +25,8 @@ export default function ResponsiveLottie() {
         animationData={lottieJson}
         play
         style={{
-          width: `${width > 640 ? "350px" : "100%"}`,
-          height: `${width > 640 ? "350px" : "auto"}`,
+          width: `${width < 640 ? "250px" : "100%"}`,
+          margin: "auto",
         }}
       />
     </div>

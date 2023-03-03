@@ -13,7 +13,7 @@ import ResponsiveLottie from "@/components/ResponsiveLottie";
 export default function About() {
   return (
     <section className='sec-h relative flex overflow-hidden' id='about'>
-      <div className='relative h-screen w-1/3 overflow-hidden'>
+      <div className='relative hidden h-screen w-1/3 overflow-hidden sm:block'>
         <Image
           alt='about'
           src='/images/about.jpg'
@@ -21,7 +21,7 @@ export default function About() {
           className=' object-cover'
         />
       </div>
-      <div className='sec-h flex w-2/3 flex-col items-center justify-center'>
+      <div className='sec-h flex flex-col items-center justify-center sm:w-2/3'>
         <SectionHeading>About Me</SectionHeading>
         <div>
           <div className='text-center text-xl font-bold text-accent'>
@@ -30,12 +30,10 @@ export default function About() {
           </div>
           <div className='px-2 text-center text-sm sm:text-base'>
             <p>안녕하세요😁😁</p>
-            <p> 저는 수의사 && 개발자 이정우입니다.</p>
+            <p>저는 수의사 && 개발자 이정우입니다.</p>
             <p>프로그래밍을 통해 사람과 반려동물의 삶을 바꾸고자합니다.</p>
           </div>
-          <div className='px-2'>
-            <ResponsiveLottie />
-          </div>
+          <ResponsiveLottie />
           <SectionHeading>Skills I Like to Use</SectionHeading>
           <div className='flex justify-center gap-3'>
             {SKILLS.map((skill, index) => (
