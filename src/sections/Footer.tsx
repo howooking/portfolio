@@ -14,11 +14,11 @@ export default function Footer() {
             />
             <p className='text-sm font-bold sm:text-3xl'>2023 Lee Jungwoo</p>
           </div>
-          <div className='flex items-center gap-10'>
+          <div className='flex items-center gap-5 sm:gap-10'>
             {SOCIALS.map((social) => (
               <a href={social.href} key={social.title} target='_blank'>
                 <social.icon
-                  size={"3vh"}
+                  size={"5vh"}
                   className='cursor-pointer hover:text-accent'
                   style={{ maxWidth: "30px" }}
                 />

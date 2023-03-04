@@ -55,7 +55,7 @@ html {
 }
 
 .wave {
-  animation: wave 1s ease-in-out infinite;
+  animation: wave 1.5s ease-in-out infinite;
 }
 
 .mobile-sec-h {

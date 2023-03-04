@@ -33,7 +33,6 @@ export default function Comments() {
     isLoading,
     isError,
     data,
-    isFetching,
     isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
@@ -50,7 +49,6 @@ export default function Comments() {
   });
 
   const { ref, inView } = useInView();
-
   useEffect(() => {
     if (inView && hasNextPage) {
       fetchNextPage();
@@ -162,14 +160,16 @@ export default function Comments() {
               <div className='flex items-center dark:bg-white'>
                 <input
                   type='text'
-                  className={`flex-1 p-3 dark:bg-white dark:text-black ${
-                    commentInput.length >= 80 ? "text-red-400" : ""
+                  className={`flex-1 py-3 px-2 text-xs dark:bg-white dark:text-black sm:text-base ${
+                    commentInput.length >= 80
+                      ? "text-red-400 dark:text-red-400"
+                      : ""
                   }`}
                   value={commentInput}
                   onChange={handleChange}
                   placeholder={`${
                     session?.user?.name
-                      ? "코멘트를 남겨주세요!"
+                      ? "삭제 가능! 코멘트를 남겨주세요!"
                       : "로그인해주세요"
                   }`}
                 />

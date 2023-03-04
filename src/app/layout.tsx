@@ -1,3 +1,5 @@
+//server
+
 import Navbar from "@/components/Navbar";
 import Providers from "@/Context/Providers";
 import "./globals.css";

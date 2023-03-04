@@ -3,7 +3,6 @@ import { SessionProvider } from "next-auth/react";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "react-hot-toast";
 import { QueryClientProvider, QueryClient } from "react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   const queryClient = new QueryClient();
@@ -11,7 +10,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
     <ThemeProvider enableSystem attribute='class'>
       <SessionProvider>
         <QueryClientProvider client={queryClient} contextSharing={true}>
-          <div className='min-h-screen bg-white text-neutral transition-all duration-300 dark:bg-neutral dark:text-white'>
+          <div className='bg-white text-neutral transition-all duration-300 dark:bg-neutral dark:text-white'>
             <Toaster />
             {children}
           </div>

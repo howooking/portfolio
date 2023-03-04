@@ -1,10 +1,13 @@
-<div className='flex items-center'>
-  <input type='text' />
-  <button
-    className='btn-accent btn'
-    onClick={() => handleSubmit}
-    disabled={disabled}
-  >
-    로그인
-  </button>
-</div>;
+"use client";
+
+export default function Sample() {
+  return (
+    <section
+      className='flex h-screen flex-col items-center justify-center bg-red-300'
+      id='home'
+    >
+      <div className='my-auto'>a</div>
+      <div>b</div>
+    </section>
+  );
+}

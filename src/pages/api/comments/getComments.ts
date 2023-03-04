@@ -8,14 +8,11 @@ export default async function handler(
   if (req.method === "GET") {
     const limit = 7;
     const cursor = req.query.cursor ?? "";
-    const cursorObj =
-      cursor === "" ? undefined : { id: parseInt(cursor as string) };
-
     // Get comments
     try {
       const data = await prisma.comment.findMany({
         take: limit,
-        cursor: cursorObj,
+        cursor: cursor === "" ? undefined : { id: parseInt(cursor as string) },
         skip: cursor === "" ? 0 : 1,
         include: {
           author: true,

@@ -24,7 +24,7 @@ export default async function handler(
     if (commentInput.length >= 80)
       return res.status(403).json({ message: "80자 이내로 적어주세요" });
     if (!commentInput.length)
-      return res.status(403).json({ message: "글은 써야지" });
+      return res.status(403).json({ message: "코멘트를 적어주세요" });
 
     // Create Comment
     try {
@@ -37,7 +37,7 @@ export default async function handler(
 
       res
         .status(200)
-        .json({ message: `${prismaUser?.name}님의 코멘트가 달렸습니다.` });
+        .json({ message: `${prismaUser?.name}님의 코멘트가 등록되었습니다.` });
     } catch (err) {
       console.log("comment creation error:", err);
       res.status(403).json({ err: "코멘트 작성 중 에러 발생" });

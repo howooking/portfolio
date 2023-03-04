@@ -5,9 +5,10 @@ import useProgressbar from "@/hooks/useProgressbar";
 import { useEffect, useState } from "react";
 import DarkmodeSwitch from "./DarkmodeSwitch";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-import Image from "next/image";
+import Loading from "@/app/loading";
 
-export default function Navbar() {
+export default function Navbar(): JSX.Element {
+  //hydration error
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [openDrawer, setOpenDrawer] = useState<boolean>(false);
   const handleDrawer = (): void => {
     setOpenDrawer((prev) => !prev);
+    //to prevent scrolling when drawer is open
     document.body.classList.toggle("drawer-open");
   };
 
@@ -24,7 +26,7 @@ export default function Navbar() {
   useEffect(() => {
     const changeNavbar = (): void => {
       if (window.scrollY > 50) {
-        setNavbarColor("#be8d8a");
+        setNavbarColor("primary");
       } else {
         setNavbarColor("transparent");
       }
@@ -32,14 +34,13 @@ export default function Navbar() {
     window.addEventListener("scroll", changeNavbar);
   }, []);
 
+  if (!mounted) return <Loading />;
   return (
     <header
-      className='fixed top-0 z-50 w-full duration-300 ease-in'
-      style={{
-        backgroundColor: navbarColor,
-      }}
+      className={`fixed top-0 z-50 w-full duration-300 ease-in bg-${navbarColor}`}
     >
-      <span
+      {/* progressbar */}
+      <div
         className='absolute h-1 w-full bg-accent duration-200'
         style={{ transform: `translateX(${scrollProgress - 100}%)` }}
       />
@@ -62,37 +63,29 @@ export default function Navbar() {
           </nav>
 
           {/* mobile button */}
-          {mounted ? (
-            <div className='z-20 flex items-center gap-3 sm:hidden'>
-              <DarkmodeSwitch />
-              {openDrawer ? (
-                <AiOutlineClose
-                  size={35}
-                  onClick={handleDrawer}
-                  className='hover:text-accent'
-                />
-              ) : (
-                <AiOutlineMenu
-                  size={35}
-                  onClick={handleDrawer}
-                  className='hover:text-accent'
-                />
-              )}
-            </div>
-          ) : (
-            <Image
-              alt='loading'
-              src='/images/spinner.svg'
-              width={20}
-              height={20}
-            />
-          )}
+          <div className='z-20 flex items-center gap-3 sm:hidden'>
+            {openDrawer ? <></> : <DarkmodeSwitch />}
+
+            {openDrawer ? (
+              <AiOutlineClose
+                size={35}
+                onClick={handleDrawer}
+                className='hover:text-accent'
+              />
+            ) : (
+              <AiOutlineMenu
+                size={35}
+                onClick={handleDrawer}
+                className='hover:text-accent'
+              />
+            )}
+          </div>
 
           <div
             className={
               openDrawer
-                ? "absolute inset-0 flex h-screen w-full items-center justify-center bg-gray-500/80 text-center duration-300 ease-in sm:hidden"
-                : "absolute top-0 bottom-0 left-[100%] right-0 flex h-screen w-full items-center justify-center bg-gray-500/80 text-center duration-300 ease-in sm:hidden"
+                ? "absolute inset-0 flex h-screen w-full items-center justify-center bg-black/90 duration-300 ease-in sm:hidden"
+                : "absolute top-0 bottom-0 left-[100%] right-0 flex h-screen w-full items-center justify-center bg-black/90 duration-300 ease-in sm:hidden"
             }
           >
             <nav className='flex flex-col items-center gap-10 '>
@@ -100,7 +93,7 @@ export default function Navbar() {
                 <a
                   key={item.title}
                   href={item.section}
-                  className='text-5xl font-bold hover:text-primary'
+                  className='text-3xl font-bold text-white hover:text-accent'
                   onClick={handleDrawer}
                 >
                   {item.title}
@@ -110,7 +103,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-      {/* progress bar */}
     </header>
   );
 }

@@ -62,8 +62,8 @@ export default function CommentBox({
   const { mutate: mutateIncreaseLike } = useMutation({
     mutationFn: async (commentId: string) =>
       await axios.put("/api/comments/increaseLike", { data: commentId }),
-    mutationKey: "likes",
-    onSettled: () => queryClient.fetchQuery(["comments"]),
+    mutationKey: "comments",
+    onSettled: () => queryClient.invalidateQueries("comments"),
   });
   const handleLike = async (commentId: string) => {
     mutateIncreaseLike(commentId);
@@ -93,6 +93,7 @@ export default function CommentBox({
             } cursor-pointer transition-all duration-150 hover:rotate-12 hover:scale-125`}
             onClick={() => hadleDelete(id)}
           />
+
           <div className='flex items-center gap-1'>
             <FcLike
               className='cursor-pointer transition-all duration-150 hover:rotate-12 hover:scale-125'

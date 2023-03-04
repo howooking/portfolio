@@ -3,12 +3,12 @@ import Lottie from "react-lottie-player/dist/LottiePlayerLight";
 import lottieJson from "../.././public/images/developer.json";
 
 export default function ResponsiveLottie() {
-  const [width, setWidth] = useState(globalThis.innerWidth);
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    const handleResize = () => setWidth(globalThis.innerWidth);
-    globalThis.addEventListener("resize", handleResize);
-    return () => globalThis.removeEventListener("resize", handleResize);
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
@@ -17,7 +17,6 @@ export default function ResponsiveLottie() {
         width: "100%",
         height: "auto",
         maxWidth: "400px",
-        margin: "auto",
       }}
     >
       <Lottie
