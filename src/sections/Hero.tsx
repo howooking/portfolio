@@ -7,7 +7,7 @@ import profile from "../../public/images/profile.jpg";
 export default function Hero() {
   return (
     <section
-      className='hero-img mobile-sec-h flex flex-col items-center justify-center bg-cover bg-fixed sm:h-screen'
+      className='hero-img h-svd flex flex-col items-center justify-center bg-cover bg-fixed sm:h-screen'
       id='home'
     >
       <div className='absolute inset-0 z-10 bg-black/10 dark:bg-black/50' />
