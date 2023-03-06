@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useInView } from "react-intersection-observer";
 import { useInfiniteQuery, useMutation } from "react-query";
+import { useAutoAnimate } from "@formkit/auto-animate/react";
 
 export type Comment = {
   author: {
@@ -26,6 +27,7 @@ export type Comment = {
 };
 
 export default function Comments() {
+  const [animationParent] = useAutoAnimate();
   const { data: session } = useSession();
 
   //GETTING COMMENTS
@@ -122,7 +124,10 @@ export default function Comments() {
       </div>
       <Container>
         <div className='shadow-lg'>
-          <div className='relative flex h-[70vh] w-full flex-col-reverse overflow-y-scroll bg-blue-100 dark:bg-gray-900 sm:h-[75vh]'>
+          <div
+            className='relative flex h-[70vh] w-full flex-col-reverse overflow-y-scroll bg-blue-100 dark:bg-gray-900 sm:h-[75vh]'
+            ref={animationParent}
+          >
             {data?.pages.map((page) => (
               <div
                 key={page.nextId ?? "lastPage"}

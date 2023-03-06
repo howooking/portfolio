@@ -2,11 +2,13 @@
 
 import Navbar from "@/components/Navbar";
 import Providers from "@/Context/Providers";
+import { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "JW's Portfolio",
-  description: "Generated with next13 app, created by Howoo",
+  description: "Portfolio website created by NexyJS",
+  category: "portfolio",
 };
 
 export default function RootLayout({
